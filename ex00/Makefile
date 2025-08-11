@@ -1,4 +1,4 @@
-NAME			= Array
+NAME			= Easyfind
 #BONUS_NAME 	= _bonus
 
 CXX				= c++
