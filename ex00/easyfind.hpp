@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <ostream>
+
 #define Type template <typename T>
 
 Type int easyfind(const T &container, int toFind) {

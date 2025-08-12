@@ -2,7 +2,7 @@ NAME			= Array
 #BONUS_NAME 	= _bonus
 
 CXX				= c++
-CXXFLAGS		= -Wall -Wextra -Werror -O2 -std=c++17 -MMD -Wshadow -Wno-shadow #-g -fsanitize=address -fno-omit-frame-pointer
+CXXFLAGS		= -Wall -Wextra -Werror -O2 -std=c++17 -MMD -Wshadow -Wno-shadow -Wfatal-errors #-g -fsanitize=address -fno-omit-frame-pointer
 
 SRC_DIR         = .
 OBJ_DIR         = src_o
