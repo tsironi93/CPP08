@@ -1,17 +1,16 @@
 #include "./Span.hpp"
+#include <climits>
 #include <exception>
 #include <iostream>
-#include <ostream>
 
 int main() {
   std::cout << "================Simple==============" << std::endl;
   Span sp = Span(5);
+  sp.addNumber(-10);
   sp.addNumber(6);
-  sp.addNumber(3);
-  sp.addNumber(18);
-  sp.addNumber(9);
   sp.addNumber(11);
   sp.addNumber(11);
+  sp.addNumber(INT_MAX);
   std::cout << sp.shortestSpan() << std::endl;
   std::cout << sp.longestSpan() << std::endl;
 
