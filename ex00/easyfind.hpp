@@ -1,10 +1,9 @@
 #pragma once
 
-#include <iostream>
+#include <algorithm>
+#include <stdexcept>
 
-#define Type template <typename T>
-
-Type int easyfind(const T &container, int toFind) {
+template <typename T> int easyfind(const T &container, int toFind) {
   auto it = std::find(container.begin(), container.end(), toFind);
   if (it == container.end()) {
     throw std::runtime_error("Value not found in container");

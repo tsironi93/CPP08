@@ -5,12 +5,10 @@
 
 int main() {
   std::cout << "================Simple==============" << std::endl;
-  Span sp = Span(5);
+  Span sp = Span(2);
   sp.addNumber(-10);
-  sp.addNumber(6);
-  sp.addNumber(11);
-  sp.addNumber(11);
   sp.addNumber(INT_MAX);
+  sp.print();
   std::cout << sp.shortestSpan() << std::endl;
   std::cout << sp.longestSpan() << std::endl;
 

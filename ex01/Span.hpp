@@ -15,7 +15,9 @@ public:
   Span operator=(const Span &other) = delete;
 
   void addNumber(int num);
-  int shortestSpan() const;
+  template <typename It> void addRange(It firstIt, It secondIt);
+  void addRangeList(std::initializer_list<int> list);
+  long long shortestSpan() const;
   unsigned int longestSpan() const;
 
   void theyAreBillions();

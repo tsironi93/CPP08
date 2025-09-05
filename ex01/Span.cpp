@@ -1,10 +1,9 @@
 #include "./Span.hpp"
 #include <algorithm>
 #include <climits>
-#include <cstddef>
-#include <exception>
+#include <initializer_list>
 #include <iostream>
-#include <ostream>
+#include <limits>
 #include <random>
 #include <stdexcept>
 #include <vector>
@@ -30,7 +29,22 @@ void Span::addNumber(int num) {
   }
 }
 
-int Span::shortestSpan() const {
+template <typename It> void Span::addRange(It firstIt, It secondIt) {
+  if (std::distance(firstIt, secondIt) >
+      static_cast<long>(this->_N - v.size())) {
+    throw std::runtime_error("Not enough capacity to add range");
+  }
+  v.insert(v.end(), firstIt, secondIt);
+}
+
+void Span::addRangeList(std::initializer_list<int> list) {
+  if (list.size() > this->_N - v.size()) {
+    throw std::runtime_error("Not enough capacity to add range");
+  }
+  v.insert(v.end(), list.begin(), list.end());
+}
+
+long long Span::shortestSpan() const {
 
   if (v.size() < 2) {
     throw std::runtime_error("Not enough numbers to calculate span");
@@ -39,9 +53,13 @@ int Span::shortestSpan() const {
   std::vector<int> tmp(v);
   std::sort(tmp.begin(), tmp.end());
 
-  int sSpan = INT_MAX;
-  for (size_t i = 0; i < tmp.size() - 1; ++i)
-    sSpan = std::min(sSpan, std::abs(tmp[i + 1] - tmp[i]));
+  long long sSpan = std::numeric_limits<long>::max();
+  for (size_t i = 1; i < tmp.size(); ++i) {
+    long int second = static_cast<long int>(tmp[i]);
+    long int first = static_cast<long int>(tmp[i - 1]);
+    long int result = std::labs(second - first);
+    sSpan = std::min<long>(sSpan, std::labs(result));
+  }
   return sSpan;
 }
 
